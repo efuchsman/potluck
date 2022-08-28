@@ -25,6 +25,36 @@ RSpec.describe Potluck do
 
   end
 
+  it '' do
+    couscous_salad = Dish.new("Couscous Salad", :appetizer)
+    cocktail_meatballs = Dish.new("Cocktail Meatballs", :entre)
+    summer_pizza = Dish.new("Summer Pizza", :appetizer)
+    roast_pork = Dish.new("Roast Pork", :entre)
+    candy_salad = Dish.new("Candy Salad", :desert)
+
+    potluck = Potluck.new("7-13-18")
+
+    potluck.add_dish(couscous_salad)
+    potluck.add_dish(summer_pizza)
+    potluck.add_dish(roast_pork)
+    potluck.add_dish(cocktail_meatballs)
+    potluck.add_dish(candy_salad)
+    potluck.get_all_from_category(:appetizer)
+    potluck.get_all_from_category(:appetizer).first
+    potluck.get_all_from_category(:appetizer).first.name
+
+    expect(potluck.get_all_from_category(:appetizer)).to eq([couscous_salad, summer_pizza])
+    expect(potluck.get_all_from_category(:appetizer).first).to eq(couscous_salad)
+    expect(potluck.get_all_from_category(:appetizer).first.name).to eq("Couscous Salad")
+
+
+
+
+
+  end
+
+
+
 
 
 
