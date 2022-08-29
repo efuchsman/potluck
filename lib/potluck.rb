@@ -30,4 +30,20 @@ class Potluck
     end
   end
 
+  def menu
+    # @dishes.group_by do |dish|
+    #   dish.category
+
+    # end
+    @dishes.each_with_object({}) do |dish, hash|
+      if hash[dish.category]
+        hash[dish.category] = hash[dish.category].push(dish.name)
+      else
+        hash[dish.category] = [dish.name]
+      end
+     p hash[dish.category].sort!
+
+    end
+  end
+
 end

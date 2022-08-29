@@ -25,7 +25,7 @@ RSpec.describe Potluck do
 
   end
 
-  it '' do
+  it 'get all dishes from a category' do
     couscous_salad = Dish.new("Couscous Salad", :appetizer)
     cocktail_meatballs = Dish.new("Cocktail Meatballs", :entre)
     summer_pizza = Dish.new("Summer Pizza", :appetizer)
@@ -46,17 +46,29 @@ RSpec.describe Potluck do
     expect(potluck.get_all_from_category(:appetizer)).to eq([couscous_salad, summer_pizza])
     expect(potluck.get_all_from_category(:appetizer).first).to eq(couscous_salad)
     expect(potluck.get_all_from_category(:appetizer).first.name).to eq("Couscous Salad")
+  end
 
+  it 'create a menu' do
+    couscous_salad = Dish.new("Couscous Salad", :appetizer)
+    cocktail_meatballs = Dish.new("Cocktail Meatballs", :entre)
+    summer_pizza = Dish.new("Summer Pizza", :appetizer)
+    roast_pork = Dish.new("Roast Pork", :entre)
+    candy_salad = Dish.new("Candy Salad", :desert)
+    bean_dip = Dish.new("Bean Dip", :appetizer)
 
+    potluck = Potluck.new("7-13-18")
 
+    potluck.add_dish(couscous_salad)
+    potluck.add_dish(summer_pizza)
+    potluck.add_dish(roast_pork)
+    potluck.add_dish(cocktail_meatballs)
+    potluck.add_dish(candy_salad)
+    potluck.add_dish(bean_dip)
+    potluck.menu
+
+    expect(potluck.menu).to eq({:appetizer =>["Bean Dip", "Couscous Salad", "Summer Pizza"], :entre => ["Cocktail Meatballs", "Roast Pork"], :desert => ["Candy Salad"]})
 
 
   end
-
-
-
-
-
-
 end
 
